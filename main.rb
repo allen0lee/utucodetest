@@ -7,6 +7,7 @@ require_relative 'db_config'
 require_relative 'models/crypto.rb'
 require 'sinatra/cross_origin'
 
+# code that enables CORS on server side
 set :bind, '0.0.0.0'
 configure do
   enable :cross_origin
@@ -15,7 +16,7 @@ before do
   response.headers['Access-Control-Allow-Origin'] = '*'
 end
   
-
+# routes
 get "/" do
   erb(:index)
 end
@@ -61,6 +62,7 @@ get "/crypto_api" do
 
 end
 
+# code that enables CORS on server side
 options "*" do
   response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
   response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
